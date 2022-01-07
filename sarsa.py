@@ -47,9 +47,9 @@ class q_learning(object):
                 reward = 30
 
         if done and next_state_ ==[11,11] :
-            reward = 100
+            reward = 150
         elif done and next_state_ == [11,2]:
-            reward = 60
+            reward = 70
         elif done and next_state_ == [6,11]:
             reward = 40
         elif state == next_state:
