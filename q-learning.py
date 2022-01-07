@@ -26,13 +26,32 @@ class q_learning(object):
 
     def update(self,q_table,state,action,reward,next_state):
         next_max_q = max(q_table[next_state])
-        q_table[state,action] = (1 - self.alpha) * q_table[state,action] \
-                                + self.alpha * (reward + self.gamma * next_max_q)
+        q_table[state,action] = (1 - self.alpha) * q_table[state,action] + self.alpha * (reward + self.gamma * next_max_q)
         return q_table
 
-    def reward(self,done,state,next_state):
-        if done:
+    def reward(self,done,state,next_state,_map):
+        boko = []
+        for i in range(_map.shape[0]):
+            for j in range(_map.shape[1]):
+                if _map[12-j][i] == 3:
+                    boko.append([12-j,i])
+
+        state_ = [state//13,state%13]
+        next_state_ = [next_state//13,next_state%13]
+
+        for boko_ in boko:
+            if state_ == boko_:
+                reward = -30
+                break
+            else:
+                reward = 30
+
+        if done and next_state_ ==[11,11] :
             reward = 100
+        elif done and next_state_ == [11,2]:
+            reward = 60
+        elif done and next_state_ == [6,11]:
+            reward = 40
         elif state == next_state:
             reward = -10
         else:
@@ -48,11 +67,11 @@ class q_learning(object):
             reward_of_episode = 0
 
             for i in range(self.steps):
-                direction = self.map.chack_movable(self.agent.pos) 
+                direction = self.map.chack_movable(self.agent.pos)
                 self.agent.action(action,direction)
                 done = self.agent.check_done()
                 next_state = self.agent.get_state()
-                reward = self.reward(done,state,next_state) 
+                reward = self.reward(done,state,next_state,self.map.map)
                 reward_of_episode += reward
                 self.q_table = self.update(self.q_table,state,action,reward,next_state)
                 action = self.decide_action(next_state,episode,self.q_table)
