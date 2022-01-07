@@ -29,9 +29,29 @@ class q_learning(object):
                                   + self.alpha *(reward + self.gamma * q_table[next_state, next_action])
         return q_table
 
-    def reward(self,done,state,next_state):
-        if done:
+    def reward(self,done,state,next_state,_map):
+        boko = []
+        for i in range(_map.shape[0]):
+            for j in range(_map.shape[1]):
+                if _map[12-j][i] == 3:
+                    boko.append([12-j,i])
+
+        state_ = [state//13,state%13]
+        next_state_ = [next_state//13,next_state%13]
+
+        for boko_ in boko:
+            if state_ == boko_:
+                reward = -30
+                break
+            else:
+                reward = 30
+
+        if done and next_state_ ==[11,11] :
             reward = 100
+        elif done and next_state_ == [11,2]:
+            reward = 60
+        elif done and next_state_ == [6,11]:
+            reward = 40
         elif state == next_state:
             reward = -10
         else:
@@ -51,7 +71,7 @@ class q_learning(object):
                 self.agent.action(action,direction)
                 done = self.agent.check_done()
                 next_state = self.agent.get_state()
-                reward = self.reward(done,state,next_state) 
+                reward = self.reward(done,state,next_state,self.map.map) 
                 reward_of_episode += reward
                 next_action = self.decide_action(next_state,episode,self.q_table)
                 self.q_table = self.update(self.q_table,state,action,reward,next_state,next_action)
