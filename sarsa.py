@@ -2,7 +2,7 @@ import numpy as np
 from map import Map
 from agent import Agent
 
-class q_learning(object):
+class sarsa(object):
     def __init__(self):
         self.map = Map()
         self.agent = Agent()
@@ -84,4 +84,4 @@ class q_learning(object):
             print("episode %5d, reward %6d, step %5d" %(episode+1,reward_of_episode,i+1))
 
 if __name__ == "__main__":
-   q_learning().run() 
+   sarsa().run() 
