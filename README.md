@@ -34,9 +34,10 @@
 | 黄色         | 行動価値       | 色が濃いほど矢印方向の行動価値が高い  | 
 
 ### URL(Youtube)
-- Q-Learning
+- Q-Learning\
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/z95Au6tL2co/0.jpg)](https://youtu.be/z95Au6tL2co)
-- SARSA  
+
+- SARSA\
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/BksKwEZ7o-k/0.jpg)](https://youtu.be/BksKwEZ7o-k)  
 
 
