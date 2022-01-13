@@ -1,5 +1,5 @@
 class Agent(object):
-    def __init__(self,init_pos = [1,1],goal_pos = [11,11], normal_pos = [11,2], bad_pos = [6,11]):
+    def __init__(self, init_pos = [1,1], goal_pos = [11,11], normal_pos = [11,2], bad_pos = [6,11]):
         self.pos = [init_pos[0], init_pos[1]]
         self.goal_pos = goal_pos
         self.normal_goal_pos = normal_pos
@@ -34,3 +34,16 @@ class Agent(object):
             done = False
         return done
 
+"""
+class Agent():
+    def __init__(self, start=[1,1], goal=[11,11], normal_goal=[11,2], bad_goal=[6,11]):
+        self.start = start
+        self.goal_pos = goal_pos
+        self.normal_goal_pos = normal_pos
+        self.bad_goal_pos = bad_pos
+        self.action_space = 4
+        
+    def action(self):
+        s
+
+"""

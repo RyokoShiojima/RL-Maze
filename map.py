@@ -4,14 +4,6 @@ from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 
 class Map(object):
     def __init__(self):
-        # 0:壁
-        # 1:通路
-        # 2:スタート
-        # 3:でこぼこ道
-        # 4:ながれていないトイレ
-        # 5:和式
-        # 6:洋式
-        #13*13
         self.map = np.array([[0,0,0,0,0,0,0,0,0,0,0,0,0,],
                              [0,3,1,1,1,0,4,1,1,1,0,6,0,],
                              [0,1,1,0,1,0,0,0,1,0,1,1,0,],
@@ -32,7 +24,7 @@ class Map(object):
         self.bad_goal_pos = [6,11]
         plt.figure(figsize=(7,7))
 
-    def chack_movable(self,pos):
+    def check_move(self,pos):
         up    = bool(self.map[12-pos[1]-1][pos[0]])
         down  = bool(self.map[12-pos[1]+1][pos[0]])
         right = bool(self.map[12-pos[1]][pos[0]+1])

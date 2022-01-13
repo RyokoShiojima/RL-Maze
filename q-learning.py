@@ -46,7 +46,7 @@ class q_learning(object):
             else:
                 reward = 30
 
-        if done and next_state_ ==[11,11] :
+        if done and next_state_ == [11,11]:
             reward = 150
         elif done and next_state_ == [11,2]:
             reward = 70
@@ -63,6 +63,7 @@ class q_learning(object):
         for episode in range(self.max_episode):
             self.agent = Agent(self.map.init_pos)
             state = self.agent.get_state()
+            print(state)
             action = np.argmax(self.q_table[state]) 
             reward_of_episode = 0
 
@@ -82,4 +83,4 @@ class q_learning(object):
             print("episode %5d, reward %6d, step %5d" %(episode+1,reward_of_episode,i+1))
 
 if __name__ == "__main__":
-   q_learning().run() 
+   q_learning().run()
