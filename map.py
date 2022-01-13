@@ -5,7 +5,7 @@ from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 class Map(object):
     def __init__(self):
         self.map = np.array([[0,0,0,0,0,0,0,0,0,0,0,0,0,],
-                             [0,3,1,1,1,0,4,1,1,1,0,6,0,],
+                             [0,3,1,1,1,0,5,1,1,1,0,6,0,],
                              [0,1,1,0,1,0,0,0,1,0,1,1,0,],
                              [0,1,0,0,1,1,0,1,1,1,1,1,0,],
                              [0,1,1,0,1,1,1,1,3,3,1,1,0,],
@@ -14,14 +14,14 @@ class Map(object):
                              [0,3,1,0,1,1,3,1,1,1,3,1,0,],
                              [0,3,1,1,1,1,1,1,0,0,1,1,0,],
                              [0,1,1,0,1,0,0,1,3,3,3,3,0,],
-                             [0,1,1,1,1,0,1,1,1,0,1,5,0,],
+                             [0,1,1,1,1,0,1,1,1,0,1,4,0,],
                              [0,2,1,1,0,0,0,1,1,1,1,1,0,],
                              [0,0,0,0,0,0,0,0,0,0,0,0,0,]])
         self.size = self.map.shape[0]
         self.init_pos = [1,1]
         self.goal_pos = [11,11]#(行,列)
-        self.normal_goal_pos = [11,2]
-        self.bad_goal_pos = [6,11]
+        self.normal_goal_pos = [6,11]
+        self.bad_goal_pos = [11,2]
         plt.figure(figsize=(7,7))
 
     def check_move(self,pos):
