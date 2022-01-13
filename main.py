@@ -14,7 +14,7 @@ def decide_action(next_state, episode, q_table):
     return next_action
 
 
-def update(q_table, state, action, reward, next_state):
+def q_update(q_table, state, action, reward, next_state):
     next_q_max = np.argmax(q_table[next_state])
     gamma = 0.5
     alpha = 0.5
@@ -74,7 +74,7 @@ def main():
             next_state = agent.get_state()
             get_reward = reward(end_or_yet, state, next_state, map_init.map)
             count += get_reward
-            q_table = update(q_table, state, choice_action, get_reward, next_state)
+            q_table = q_update(q_table, state, choice_action, get_reward, next_state)
             choice_action = decide_action(next_state, episode, q_table)
             state = next_state
             map_init.plot(agent.pos, q_table)
